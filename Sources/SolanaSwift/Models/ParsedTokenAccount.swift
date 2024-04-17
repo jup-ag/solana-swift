@@ -16,7 +16,8 @@ public struct ParsedTokenAccount: Decodable {
         public let executable: Bool
         public let lamports: Int
         public let owner: String
-        public let rentEpoch, space: Int
+        public let rentEpoch: UInt64
+        public let space: Int
     }
 
     public struct DataClass: Decodable {
@@ -26,15 +27,15 @@ public struct ParsedTokenAccount: Decodable {
     }
 
     public struct Parsed: Decodable {
-        public let accountType: String
+        public let accountType: String?
         public let info: Info
         public let type: String
     }
 
     public struct Info: Decodable {
         public let tokenAmount: Amount
-        public let delegate: String
-        public let delegatedAmount: Amount
+        public let delegate: String?
+        public let delegatedAmount: Amount?
         public let state: String
         public let isNative: Bool
         public let mint, owner: String
@@ -43,7 +44,7 @@ public struct ParsedTokenAccount: Decodable {
     public struct Amount: Decodable {
         public let amount: String
         public let decimals: Int
-        public let uiAmount: Float64
+        public let uiAmount: Float64?
         public let uiAmountString: String
     }
 
