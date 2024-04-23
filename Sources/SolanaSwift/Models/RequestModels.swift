@@ -82,6 +82,7 @@ public struct RequestConfiguration: Encodable {
     public let preflightCommitment: Commitment?
     public let searchTransactionHistory: Bool?
     public let replaceRecentBlockhash: Bool?
+    public let maxSupportedTransactionVersion: Int?
 
     public init?(
         commitment: Commitment? = nil,
@@ -94,7 +95,8 @@ public struct RequestConfiguration: Encodable {
         skipPreflight: Bool? = nil,
         preflightCommitment: Commitment? = nil,
         searchTransactionHistory: Bool? = nil,
-        replaceRecentBlockhash: Bool? = nil
+        replaceRecentBlockhash: Bool? = nil,
+        maxSupportedTransactionVersion: Int? = nil
     ) {
         if commitment == nil,
            encoding == nil,
@@ -106,7 +108,8 @@ public struct RequestConfiguration: Encodable {
            skipPreflight == nil,
            preflightCommitment == nil,
            searchTransactionHistory == nil,
-           replaceRecentBlockhash == nil
+           replaceRecentBlockhash == nil,
+           maxSupportedTransactionVersion == nil
         {
             return nil
         }
@@ -122,6 +125,7 @@ public struct RequestConfiguration: Encodable {
         self.preflightCommitment = preflightCommitment
         self.searchTransactionHistory = searchTransactionHistory
         self.replaceRecentBlockhash = replaceRecentBlockhash
+        self.maxSupportedTransactionVersion = maxSupportedTransactionVersion
     }
 }
 
