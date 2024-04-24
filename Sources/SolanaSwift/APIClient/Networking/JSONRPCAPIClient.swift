@@ -342,7 +342,7 @@ public class JSONRPCAPIClient: SolanaAPIClient {
 
     public func getMultipleAccounts<T>(
         pubkeys: [String],
-        commitment: Commitment
+        commitment: Commitment?
     ) async throws -> [BufferInfo<T>?]
         where T: BufferLayout
     {
