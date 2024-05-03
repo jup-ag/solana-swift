@@ -192,9 +192,10 @@ public class JSONRPCAPIClient: SolanaAPIClient {
 
     public func getParsedTokenAccountsByOwner(
         pubkey: String,
-        params: OwnerInfoParams?
+        params: OwnerInfoParams?,
+        commitment: Commitment? = nil
     ) async throws -> [ParsedTokenAccount] {
-        let configs = RequestConfiguration(encoding: "jsonParsed")
+        let configs = RequestConfiguration(commitment: commitment,encoding: "jsonParsed")
 
         let result: Rpc<[ParsedTokenAccount]> = try await get(
             method: "getTokenAccountsByOwner",
