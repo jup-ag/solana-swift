@@ -1,4 +1,5 @@
 import Foundation
+import GenericJSON
 
 public typealias TransactionID = String
 public typealias Lamports = UInt64
@@ -269,38 +270,7 @@ public enum AnyTransactionError: Codable {
 }
 
 public typealias TransactionError = [String: [ErrorDetail]]
-public struct ErrorDetail: Codable {
-    public init(wrapped: Any) {
-        self.wrapped = wrapped
-    }
-
-    let wrapped: Any
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(Bool.self) {
-            wrapped = value
-        } else if let value = try? container.decode(Double.self) {
-            wrapped = value
-        } else if let value = try? container.decode(String.self) {
-            wrapped = value
-        } else if let value = try? container.decode(Int.self) {
-            wrapped = value
-        } else if let value = try? container.decode([String: Int].self) {
-            wrapped = value
-        } else {
-            wrapped = ""
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        if let wrapped = wrapped as? Encodable {
-            let wrapper = EncodableWrapper(wrapped: wrapped)
-            try container.encode(wrapper)
-        }
-    }
-}
+public typealias ErrorDetail = JSON
 
 public struct InnerInstruction: Decodable {
     public let index: UInt32

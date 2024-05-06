@@ -21,6 +21,7 @@ let package = Package(
         .package(url: "https://github.com/Boilertalk/secp256k1.swift.git", from: "0.1.0"),
         .package(url: "https://github.com/bitmark-inc/tweetnacl-swiftwrap.git", from: "1.0.2"),
         .package(url: "https://github.com/bigearsenal/task-retrying-swift.git", from: "2.0.0"),
+        .package(url: "https://github.com/iwill/generic-json-swift.git", from: "2.0.2"),
 
         // Docs generator
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
@@ -32,6 +33,7 @@ let package = Package(
                 .product(name: "secp256k1", package: "secp256k1.swift"),
                 .product(name: "TweetNacl", package: "tweetnacl-swiftwrap"),
                 .product(name: "Task_retrying", package: "task-retrying-swift"),
+                .product(name: "GenericJSON", package: "generic-json-swift"),
             ]
         ),
         .testTarget(
