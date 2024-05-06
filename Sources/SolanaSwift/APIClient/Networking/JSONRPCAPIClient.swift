@@ -294,16 +294,6 @@ public class JSONRPCAPIClient: SolanaAPIClient {
         )!
     ) async throws -> SimulationResult {
         let result: Rpc<SimulationResult> = try await get(method: "simulateTransaction", params: [transaction, configs])
-
-        // Error assertion
-        if let err = result.value.err {
-            if (err.wrapped as? String) == "BlockhashNotFound" {
-                throw APIClientError.blockhashNotFound
-            }
-            throw APIClientError.transactionSimulationError(logs: result.value.logs)
-        }
-
-        // Return value
         return result.value
     }
 
