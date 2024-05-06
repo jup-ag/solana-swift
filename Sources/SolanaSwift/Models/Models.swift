@@ -241,35 +241,8 @@ public struct TransactionMeta: Decodable {
     public let preTokenBalances: [TokenBalance]?
 }
 
-public enum AnyTransactionError: Codable {
-    case detailed(TransactionError)
-    case string(String)
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(String.self) {
-            self = .string(x)
-            return
-        }
-        if let x = try? container.decode(TransactionError.self) {
-            self = .detailed(x)
-            return
-        }
-        throw DecodingError.typeMismatch(AnyTransactionError.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for ErrUnion"))
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case let .detailed(x):
-            try container.encode(x)
-        case let .string(x):
-            try container.encode(x)
-        }
-    }
-}
-
-public typealias TransactionError = [String: [ErrorDetail]]
+public typealias AnyTransactionError = JSON
+public typealias TransactionError = JSON
 public typealias ErrorDetail = JSON
 
 public struct InnerInstruction: Decodable {
