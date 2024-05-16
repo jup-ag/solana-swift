@@ -4,7 +4,7 @@ public enum VersionedMessage: Equatable {
     case legacy(Message)
     case v0(MessageV0)
 
-    static func deserialize(data: Data) throws -> Self {
+    public static func deserialize(data: Data) throws -> Self {
         guard !data.isEmpty else {
             throw VersionedMessageError.deserializationError("Data is empty")
         }
