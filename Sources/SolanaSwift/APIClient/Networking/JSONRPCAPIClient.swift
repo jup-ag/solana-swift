@@ -129,18 +129,22 @@ public class JSONRPCAPIClient: SolanaAPIClient {
         return blockhash
     }
 
-    public func getSignatureStatuses(signatures: [String],
-                                     configs: RequestConfiguration? = nil) async throws -> [SignatureStatus?]
-    {
+    public func getSignatureStatuses(
+        signatures: [String],
+        configs: RequestConfiguration? = nil
+    ) async throws -> [SignatureStatus?] {
+        
         let result: Rpc<[SignatureStatus?]> = try await get(method: "getSignatureStatuses",
                                                             params: [signatures, configs])
         return result.value
     }
 
-    public func getSignatureStatus(signature: String,
-                                   configs _: RequestConfiguration? = nil) async throws -> SignatureStatus
-    {
-        guard let result = try await getSignatureStatuses(signatures: [signature]).first else {
+    public func getSignatureStatus(
+        signature: String,
+        configs: RequestConfiguration? = nil
+    ) async throws -> SignatureStatus {
+        
+        guard let result = try await getSignatureStatuses(signatures: [signature], configs: configs).first else {
             throw APIClientError.invalidResponse
         }
         return try result ?! APIClientError.invalidResponse
