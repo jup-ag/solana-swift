@@ -259,7 +259,7 @@ public struct TokenBalance: Decodable {
 public struct SimulationResult: Decodable {
     public let err: ErrorDetail? // TransactionError? // string | object
     public let logs: [String]
-    public let returnedData: [SimulationData]
+    public let returnData: [SimulationData]
 }
 
 public struct SimulationData: Decodable {
