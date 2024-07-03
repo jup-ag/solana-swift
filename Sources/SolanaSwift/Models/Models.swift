@@ -259,12 +259,12 @@ public struct TokenBalance: Decodable {
 public struct SimulationResult: Decodable {
     public let err: ErrorDetail? // TransactionError? // string | object
     public let logs: [String]
-    public let returnData: [SimulationData]
+    public let returnData: SimulationData?
 }
 
 public struct SimulationData: Decodable {
     public let programId: String
-    public let data: String
+    public let data: [String]
 }
 
 public struct StakeActivation: Decodable {
