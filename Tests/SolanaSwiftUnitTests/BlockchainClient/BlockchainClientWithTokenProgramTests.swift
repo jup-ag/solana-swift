@@ -400,6 +400,14 @@ private class MockAPIClient: SolanaAPIClient {
         0
     }
 
+	func getBlockHeight(commitment: SolanaSwift.Commitment?) async throws -> UInt64 {
+		0
+	}
+
+	func getLatestBlockhash(commitment: SolanaSwift.Commitment?) async throws -> String {
+		""
+	}
+
     func getAddressLookupTable(accountKey _: SolanaSwift.PublicKey) async throws -> SolanaSwift
         .AddressLookupTableAccount?
     {
