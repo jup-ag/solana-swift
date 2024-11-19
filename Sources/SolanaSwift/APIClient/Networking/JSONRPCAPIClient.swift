@@ -50,8 +50,8 @@ public class JSONRPCAPIClient: SolanaAPIClient {
         }
     }
 
-    public func getBlockHeight() async throws -> UInt64 {
-        try await get(method: "getBlockHeight", params: [])
+    public func getBlockHeight(commitment: Commitment? = nil) async throws -> UInt64 {
+        try await get(method: "getBlockHeight", params: [RequestConfiguration(commitment: commitment)])
     }
 
     public func getConfirmedBlocksWithLimit(startSlot: UInt64, limit: UInt64) async throws -> [UInt64] {

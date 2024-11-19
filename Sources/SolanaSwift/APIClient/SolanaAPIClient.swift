@@ -64,7 +64,7 @@ public protocol SolanaAPIClient {
     /// - Returns Current block height
     /// - SeeAlso https://docs.solana.com/developing/clients/jsonrpc-api#getblockheight
     ///
-    func getBlockHeight() async throws -> UInt64
+    func getBlockHeight(commitment: Commitment?) async throws -> UInt64
 
     /// Returns a list of confirmed blocks starting at the given slot
     /// - Parameters:
