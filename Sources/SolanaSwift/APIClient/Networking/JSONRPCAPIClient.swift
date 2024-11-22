@@ -127,16 +127,16 @@ public class JSONRPCAPIClient: SolanaAPIClient {
             throw APIClientError.blockhashNotFound
         }
         return blockhash
-    }
-    
-    public func getLatestBlockhash(commitment: Commitment? = nil) async throws -> String {
-        let result: Rpc<Blockhash> = try await get(method: "getLatestBlockhash",
-                                             params: [RequestConfiguration(commitment: commitment)])
-        guard let blockhash = result.value.blockhash else {
-            throw APIClientError.blockhashNotFound
-        }
-        return blockhash
-    }
+	}
+
+	public func getLatestBlockhash(commitment: Commitment? = nil) async throws -> String {
+		let result: Rpc<Blockhash> = try await get(method: "getLatestBlockhash",
+												   params: [RequestConfiguration(commitment: commitment)])
+		guard let blockhash = result.value.blockhash else {
+			throw APIClientError.blockhashNotFound
+		}
+		return blockhash
+	}
 
 	public func getLatestBlockhashModel(commitment: Commitment? = nil) async throws -> Blockhash {
 		let result: Rpc<Blockhash> = try await get(method: "getLatestBlockhash",
