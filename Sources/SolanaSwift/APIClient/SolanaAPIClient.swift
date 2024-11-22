@@ -296,6 +296,9 @@ public protocol SolanaAPIClient {
     ///
     func getLatestBlockhash(commitment: Commitment?) async throws -> String
 
+    /// Returns the Blockhash model
+    func getLatestBlockhashModel(commitment: Commitment?) async throws -> Blockhash
+
     /// Returns signatures for confirmed transactions that include the given address in their accountKeys list.
     /// Returns signatures backwards in time from the provided signature or most recent confirmed block
     /// - Parameters:
