@@ -106,7 +106,7 @@ public struct Fee: Decodable {
 }
 
 public struct MessageFee: Decodable {
-    public let value: Decimal
+    public let value: UInt64
     public let context: Context
 }
 
