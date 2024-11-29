@@ -105,6 +105,11 @@ public struct Fee: Decodable {
     public let lastValidSlot: UInt64?
 }
 
+public struct MessageFee: Decodable {
+    public let value: Decimal
+    public let context: Context
+}
+
 public struct Blockhash: Decodable {
     public let blockhash: String?
     public let lastValidBlockHeight: UInt64?

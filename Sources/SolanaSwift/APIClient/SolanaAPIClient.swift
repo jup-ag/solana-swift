@@ -120,6 +120,9 @@ public protocol SolanaAPIClient {
     /// - SeeAlso https://docs.solana.com/developing/clients/jsonrpc-api#getfees
     ///
     func getFees(commitment: Commitment?) async throws -> Fee
+    
+    /// Get the fee the network will charge for a particular Message
+    func getFeeForMessage(message: String, commitment: Commitment?) async throws -> MessageFee
 
     /// Returns minimum balance required to make account rent exempt
     /// - Parameters:
